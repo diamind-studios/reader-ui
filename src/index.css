@@ -9,4 +9,41 @@
 }
 
 @layer components {
+  .topbar {
+    @apply relative flex items-center text-gray-600 
+    w-auto h-10 px-2 mx-2 my-2 not-italic select-none;
+  }
+  .topbar-button {
+    @apply shadow-lg bg-gray-800 text-gray-200 hover:bg-amber-400
+    hover:text-white rounded-xl hover:rounded-lg
+    transition-all duration-100 ease-linear;
+  }
+  .sidebar-icon {
+    @apply shadow-lg bg-gray-800 text-green-500 hover:bg-green-600
+    hover:text-white rounded-3xl hover:rounded-xl
+    transition-all duration-100 ease-linear cursor-pointer;
+  }
+  .sidebar-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max left-14
+    rounded-md shadow-md
+    text-white bg-gray-900
+    text-xs font-bold
+    transition-all duration-100 scale-0 origin-left;
+  }
+  .topbar-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max top-11
+    rounded-md shadow-md
+    text-white bg-gray-900
+    text-xs font-bold
+    transition-all duration-150 scale-0 origin-top;
+  }
+  .version-list {
+    @apply top-14 ease-linear transition-all scale-0
+    duration-100 bg-green-600 absolute rounded-3xl 
+    p-1 text-white shadow-lg cursor-pointer select-none
+    origin-top;
+  }
+  .reader {
+    @apply bg-gray-100 shadow-md rounded-md;
+  }
 }

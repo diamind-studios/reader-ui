@@ -1,12 +1,42 @@
-export const TopBar = () => {
-  return (
-    <header className='fixed top-0 left-0 h-14 w-screen flex flex-row shadow-m bg-gray-400'>
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-        Learn React
+import logo from '../images/logo.png';
+import search from '../images/search.svg';
+
+export const TopBar = (): JSX.Element => (
+  <div className='fixed top-0 left-0 h-14 w-screen flex flex-row shadow-md bg-slate-100 font-bold text-xl z-10'>
+    <header id='logo' className='flex items-center w-full'>
+      <a className='w-10 h-10 absolute' href='http://localhost:3000'>
+        {/* This shouldn't be duplicated below. But if it's not absolute, it resizes with the browser window */}
+        <img
+          className='w-10 align-middle mx-2'
+          src={logo}
+          alt='https://publicdomainvectors.org/en/free-clipart/Icon-book/58707.html'
+        />
       </a>
+      <img
+        className='w-10 align-middle mx-2'
+        src={logo}
+        alt='https://publicdomainvectors.org/en/free-clipart/Icon-book/58707.html'
+      />
+      <div className='flex items-center bg-gray-200 h-8 my-3 rounded-md p-1'>
+        {/* w-1/2 */}
+        <input placeholder='Search...' className='align-middle bg-transparent'>
+          {/* w-full */}
+        </input>
+        <button className='w-7 '>
+          <img src={search} alt='search button' />
+        </button>
+      </div>
+      <div id='navigation' className='flex w-full justify-center'>
+        <button className='topbar topbar-button group'>
+          {'<'}
+          <span className='topbar-tooltip group-hover:scale-100'>Previous Chapter</span>
+        </button>
+        <span className='topbar cursor-default'>Genesis 1</span>
+        <button className='topbar topbar-button group'>
+          {'>'}
+          <span className='topbar-tooltip group-hover:scale-100'>Next Chapter</span>
+        </button>
+      </div>
     </header>
-  );
-};
+  </div>
+);

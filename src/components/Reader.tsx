@@ -39,13 +39,16 @@ every beast of the earth, and to every fowl of the air, and to every thing that 
 there is life, I have given every green herb for meat: and it was so. 31 And God saw every thing that he had
 made, and, behold, it was very good. And the evening and the morning were the sixth day.`;
 
-export const Reader = (props = { primary: false }): JSX.Element => {
+export const Reader = (props: {
+  id: string;
+  closeAction?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}): JSX.Element => {
   return (
-    <div className='w-2/5 mx-auto relative'>
-      <div className='reader my-3 group'>
-        {!props.primary ? <CloseButton></CloseButton> : null}
+    <div id={props.id} className='w-2/5 mx-3 flex-row relative'>
+      <button className='w-full py-1 reader my-3 select-none bg-gray-100 hover:bg-white group'>
+        {props.closeAction ? <CloseButton closeAction={props.closeAction}></CloseButton> : null}
         <h1 className='text-xl font-bold text-center'>King James Version</h1>
-      </div>
+      </button>
       <div className='leading-8 p-4 reader'>{placeHolderText}</div>
     </div>
   );

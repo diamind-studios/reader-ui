@@ -27,14 +27,14 @@ export const TopBar = (): JSX.Element => (
         </button>
       </div>
       <div id='navigation' className='flex w-full justify-center'>
-        <button className='topbar topbar-button group'>
-          {'<'}
-          <span className='topbar-tooltip group-hover:scale-100'>Previous Chapter</span>
+        <button className='topbar-item topbar-button group'>
+          <span>{'<'}</span>
+          <span className='tooltip topbar-tooltip '>Previous Chapter</span>
         </button>
-        <span className='topbar cursor-default'>Genesis 1</span>
-        <button className='topbar topbar-button group'>
-          {'>'}
-          <span className='topbar-tooltip group-hover:scale-100'>Next Chapter</span>
+        <span className='topbar-item cursor-default'>Genesis 1</span>
+        <button className='topbar-item topbar-button group'>
+          <span>{'>'}</span>
+          <span className='tooltip topbar-tooltip'>Next Chapter</span>
         </button>
       </div>
     </header>

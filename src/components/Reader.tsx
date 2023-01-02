@@ -40,15 +40,15 @@ there is life, I have given every green herb for meat: and it was so. 31 And God
 made, and, behold, it was very good. And the evening and the morning were the sixth day.`;
 
 export const Reader = (props: {
-  id: string;
+  key: string;
   closeAction?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }): JSX.Element => {
   return (
-    <div id={props.id} className='w-2/5 mx-3 flex-row relative'>
-      <button className='w-full py-1 reader my-3 select-none bg-gray-100 hover:bg-white group'>
+    <div className='w-2/5 mx-3 flex-row relative'>
+      <div className='w-full py-1 reader my-3 select-none cursor-pointer bg-gray-100 hover:bg-white group'>
         {props.closeAction ? <CloseButton closeAction={props.closeAction}></CloseButton> : null}
         <h1 className='text-xl font-bold text-center'>King James Version</h1>
-      </button>
+      </div>
       <div className='leading-8 p-4 reader'>{placeHolderText}</div>
     </div>
   );

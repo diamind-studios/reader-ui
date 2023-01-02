@@ -9,33 +9,30 @@
 }
 
 @layer components {
-  .topbar {
+  .topbar-item {
     @apply relative flex items-center text-gray-600 
     w-auto h-10 px-2 mx-2 my-2 not-italic select-none;
   }
   .topbar-button {
     @apply shadow-lg bg-gray-800 text-gray-200 hover:bg-amber-400
-    hover:text-white rounded-xl hover:rounded-lg
-    transition-all duration-100 ease-linear;
+    hover:text-white rounded-xl hover:rounded-lg justify-center
+    transition-all duration-100 ease-linear ;
   }
   .sidebar-icon {
     @apply shadow-lg bg-gray-800 text-green-500 hover:bg-green-600
     hover:text-white rounded-3xl hover:rounded-xl
     transition-all duration-100 ease-linear cursor-pointer;
   }
+  .tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max rounded-md shadow-md
+    text-white bg-gray-900 text-xs font-bold
+    transition-all scale-0 group-hover:scale-100;
+  }
   .sidebar-tooltip {
-    @apply absolute w-auto p-2 m-2 min-w-max left-14
-    rounded-md shadow-md
-    text-white bg-gray-900
-    text-xs font-bold
-    transition-all duration-100 scale-0 origin-left;
+    @apply left-14 duration-100 origin-left;
   }
   .topbar-tooltip {
-    @apply absolute w-auto p-2 m-2 min-w-max top-11
-    rounded-md shadow-md
-    text-white bg-gray-900
-    text-xs font-bold
-    transition-all duration-150 scale-0 origin-top;
+    @apply top-11 duration-150 origin-top;
   }
   .version-list {
     @apply top-14 ease-linear transition-all scale-0

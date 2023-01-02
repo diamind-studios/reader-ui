@@ -2,26 +2,34 @@ import { useState } from 'react';
 import { getItemCloser } from '../common/closeItem';
 import { Reader } from './Reader';
 
+const MAX_READER_TABS = 3;
+
 export const PageContent = () => {
-  const defaultReaderList = [<Reader id={crypto.randomUUID()}></Reader>];
+  const defaultReaderList = [<Reader key={crypto.randomUUID()}></Reader>];
   const [readers, setReaders] = useState(defaultReaderList);
 
-  const addBible = async () => {
-    if (readers.length === 7) return;
-    const id = crypto.randomUUID();
-    const closeAction = getItemCloser(id, readers, setReaders);
-    const newReader = <Reader id={id} closeAction={closeAction}></Reader>;
+  const addReaderTab = async () => {
+    if (readers.length === MAX_READER_TABS) return;
+    const key = crypto.randomUUID();
+    const closeAction = getItemCloser(key, setReaders);
+    const newReader = <Reader key={key} closeAction={closeAction}></Reader>;
     await setReaders([...readers, newReader]);
   };
 
+  const maxReaders = readers.length === MAX_READER_TABS;
+
+  const baseNewTabStyles =
+    'relative align-middle font-bold py-1 my-3 h-9 px-3 right-0 group rounded-md shadow-md text-white';
+  const newTabStyles = maxReaders
+    ? 'bg-gray-300 cursor-default ' + baseNewTabStyles
+    : 'bg-blue-600 hover:bg-blue-500 ' + baseNewTabStyles;
+
   return (
-    <div id='content' className='my-16 text-lg w-full flex bg-transparent justify-center relative overflow-scroll'>
+    <div id='content' className='my-16 text-lg mr-10 flex bg-transparent justify-center relative overflow-show'>
       {readers}
-      <button
-        onClick={addBible}
-        className='absolute font-bold bg-blue-600 hover:bg-green-500 text-white h-12 p-2 z-0 shadow-md right-0 top-11'
-      >
-        + Add another Bible
+      <button onClick={addReaderTab} className={newTabStyles}>
+        <span>+</span>
+        <span className={maxReaders ? 'tooltip group-hover:scale-0' : 'tooltip top-8 -left-2'}>Add another Bible</span>
       </button>
     </div>
   );

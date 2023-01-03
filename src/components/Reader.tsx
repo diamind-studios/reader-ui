@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { CloseButton } from './CloseButton';
+import { VersionList } from './VersionList';
 
 const placeHolderText = `1 In the beginning God created the heaven and the earth. 2 And the earth was without form, and void; and
 darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters. 3 And God said,
@@ -43,11 +45,28 @@ export const Reader = (props: {
   key: string;
   closeAction?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }): JSX.Element => {
+  const [selectedVersion, setSelectedVersion] = useState('King James Version');
+  const [showVersions, setShowVersions] = useState(false);
+
   return (
     <div className='w-2/5 mx-3 flex-row relative'>
-      <div className='w-full py-1 reader my-3 select-none cursor-pointer bg-gray-100 hover:bg-white group'>
+      <VersionList
+        setVersion={setSelectedVersion}
+        setShowVersions={setShowVersions}
+        showVersions={showVersions}
+      ></VersionList>
+      <div
+        tabIndex={100}
+        onFocus={() => setShowVersions(true)}
+        onBlur={(e) => {
+          if (!e.relatedTarget?.classList.contains('version-selection')) setShowVersions(false);
+        }}
+        className={`flex w-full py-1 reader my-3 select-none cursor-pointer hover:bg-white justify-center relative group ${
+          showVersions ? 'bg-white' : 'bg-gray-100'
+        }`}
+      >
         {props.closeAction ? <CloseButton closeAction={props.closeAction}></CloseButton> : null}
-        <h1 className='text-xl font-bold text-center'>King James Version</h1>
+        <h2 className='text-xl font-bold text-center'>{selectedVersion}</h2>
       </div>
       <div className='leading-8 p-4 reader'>{placeHolderText}</div>
     </div>

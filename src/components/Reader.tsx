@@ -45,16 +45,13 @@ export const Reader = (props: {
   key: string;
   closeAction?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }): JSX.Element => {
-  const [selectedVersion, setSelectedVersion] = useState('King James Version');
+  const [selectedVersion, setVersion] = useState('King James Version');
   const [showVersions, setShowVersions] = useState(false);
+  const setters = { setVersion, setShowVersions };
 
   return (
     <div className='w-2/5 mx-3 flex-row relative'>
-      <VersionList
-        setVersion={setSelectedVersion}
-        setShowVersions={setShowVersions}
-        showVersions={showVersions}
-      ></VersionList>
+      <VersionList setters={setters} showVersions={showVersions}></VersionList>
       <div
         tabIndex={100}
         onFocus={() => setShowVersions(true)}

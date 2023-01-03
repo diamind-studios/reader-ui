@@ -25,7 +25,7 @@ export const PageContent = () => {
     : 'bg-blue-600 hover:bg-blue-500 ' + baseNewTabStyles;
 
   return (
-    <div id='content' className='my-16 text-lg mr-10 flex bg-transparent justify-center relative overflow-show'>
+    <div id='content' className='my-16 w-full text-lg mr-10 flex bg-transparent justify-center relative overflow-show'>
       {readers}
       <button onClick={addReaderTab} className={newTabStyles}>
         <span>+</span>

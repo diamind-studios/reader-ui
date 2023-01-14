@@ -1,15 +1,24 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { getTranslationText } from '../services/bible-api/bible-api';
+import { Passage } from '../types/types';
 import { CloseButton } from './CloseButton';
 import { VersionList } from './VersionList';
 
 export const Reader = (props: {
   key: string;
+  passage: Passage;
   closeAction?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }): JSX.Element => {
-  const [selectedVersion, setVersion] = useState('King James Version');
+  const [selectedVersion, setVersion] = useState('Choose A Version');
   const [showVersions, setShowVersions] = useState(false);
-  const [readerText, setReaderText] = useState('N/A');
+  const [readerText, setReaderText] = useState<string>('');
   const setters = { setVersion, setShowVersions, setReaderText };
+
+  useMemo(async () => {
+    console.log('🌐 retrieving text...');
+    const text = await getTranslationText();
+    setReaderText(text);
+  }, [props.passage, selectedVersion]);
 
   return (
     <div className='w-2/5 mx-3 flex-row relative'>

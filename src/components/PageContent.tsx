@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import { getItemCloser } from '../common/closeItem';
+import { Passage } from '../types/types';
 import { Reader } from './Reader';
 
 const MAX_READER_TABS = 3;
 
-export const PageContent = () => {
-  const defaultReaderList = [<Reader key={crypto.randomUUID()}></Reader>];
+export const PageContent = (props: { passage: Passage }) => {
+  const defaultReaderList = [<Reader key={crypto.randomUUID()} passage={props.passage}></Reader>];
   const [readers, setReaders] = useState(defaultReaderList);
+  // const [versionsList, setVersionsList] = useState();
 
   const addReaderTab = async () => {
     if (readers.length === MAX_READER_TABS) return;
     const key = crypto.randomUUID();
     const closeAction = getItemCloser(key, setReaders);
-    const newReader = <Reader key={key} closeAction={closeAction}></Reader>;
+    const newReader = <Reader key={key} passage={props.passage} closeAction={closeAction}></Reader>;
     await setReaders([...readers, newReader]);
   };
 

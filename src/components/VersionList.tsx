@@ -1,4 +1,4 @@
-import { StateSetter } from './types';
+import { StateSetter } from '../types/types';
 import { VersionListOption } from './VersionListOption';
 
 export const VersionList = (props: {

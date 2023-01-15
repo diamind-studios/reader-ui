@@ -8,3 +8,8 @@ export interface Passage {
   book: string;
   chapter: number;
 }
+
+export interface Version {
+  name: string;
+  fullname: string;
+}

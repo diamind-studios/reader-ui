@@ -1,15 +1,19 @@
-import { StateSetter } from '../types/types';
+import { StateSetter, Version } from '../types/types';
 import { VersionListOption } from './VersionListOption';
 
 export const VersionList = (props: {
   setters: {
-    setVersion: StateSetter<string>;
+    setVersion: StateSetter<Version>;
     setShowVersions: StateSetter<boolean>;
-    setReaderText: StateSetter<string>;
   };
   showVersions: boolean;
 }): JSX.Element => {
-  const versions = ['Berean Study Bible', 'King James Version', 'Vulgate', 'Septuagint'];
+  const versions: Version[] = [
+    { name: 'BSB', fullname: 'Berean Study Bible' },
+    { name: 'KJV', fullname: 'King James Version' },
+    { name: 'VUL', fullname: 'Vulgate' },
+    { name: 'LXX', fullname: 'Septuagint' },
+  ];
   return (
     <span
       id='versionSelect'

@@ -9,15 +9,15 @@ export const Reader = (props: {
   passage: Passage;
   closeAction?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }): JSX.Element => {
-  const [selectedVersion, setVersion] = useState('Choose A Version');
+  const [selectedVersion, setVersion] = useState({ fullname: 'Choose A Version', name: 'KJV' });
   const [showVersions, setShowVersions] = useState(false);
-  const [readerText, setReaderText] = useState<string>('');
-  const setters = { setVersion, setShowVersions, setReaderText };
+  const [passageData, setPassageData] = useState<any[]>([]);
+  const setters = { setVersion, setShowVersions, setReaderText: setPassageData };
 
   useMemo(async () => {
     console.log('🌐 retrieving text...');
-    const text = await getTranslationText();
-    setReaderText(text);
+    const passage = await getTranslationText(selectedVersion.name);
+    setPassageData(passage);
   }, [props.passage, selectedVersion]);
 
   return (
@@ -33,9 +33,13 @@ export const Reader = (props: {
         justify-center relative group ${showVersions ? 'bg-white' : 'bg-gray-100'}`}
       >
         {props.closeAction ? <CloseButton closeAction={props.closeAction}></CloseButton> : null}
-        <h2 className='text-xl font-bold text-center'>{selectedVersion}</h2>
+        <h2 className='text-xl font-bold text-center'>{selectedVersion.fullname}</h2>
       </div>
-      <div className='leading-8 p-4 reader'>{readerText}</div>
+      <div className='leading-8 p-4 reader'>
+        {passageData.map((verse) => (
+          <div>{`${verse.verse}. ` + verse.text}</div>
+        ))}
+      </div>
     </div>
   );
 };

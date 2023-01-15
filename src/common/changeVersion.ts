@@ -1,14 +1,12 @@
-import { StateSetter } from '../types/types';
+import { StateSetter, Version } from '../types/types';
 
 export const changeVersion = (
-  version: string,
+  version: Version,
   setters: {
-    setVersion: StateSetter<string>;
+    setVersion: StateSetter<Version>;
     setShowVersions: StateSetter<boolean>;
-    setReaderText: StateSetter<string>;
   }
 ) => {
   setters.setVersion(version);
-  setters.setReaderText('N/A');
   setters.setShowVersions(false);
 };

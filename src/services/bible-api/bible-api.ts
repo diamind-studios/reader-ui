@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { Api } from '../api';
 
-const url = 'http://localhost:3001';
+const url = process.env.REACT_APP_API_URL;
 export const getTranslationText = async () => {
   const endpoint = '/source_text';
   const headers = {
@@ -13,6 +13,7 @@ export const getTranslationText = async () => {
     translation: 'KJV',
   };
   // const queryString = '?book=Genesis&translation=KJV';
+  console.log('requesting to:', url + endpoint);
   const config: AxiosRequestConfig = { headers, params };
   const response = await axios.get(url + endpoint, config);
   return response.data.data;

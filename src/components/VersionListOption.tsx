@@ -9,7 +9,7 @@ export const VersionListOption = (props: { key: string; version: Version; setter
       className='standard-transition version-selection bg-inherit px-3 
       py-1 hover:bg-white hover:scale-105 cursor-pointer select-none rounded-md'
     >
-      {props.version.fullname}
+      {props.version.full_name + ` (${props.version.name})`}
     </div>
   );
 };

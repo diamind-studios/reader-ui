@@ -10,6 +10,12 @@ export interface Passage {
 }
 
 export interface Version {
+  id: number;
   name: string;
-  fullname: string;
+  full_name: string;
+}
+
+export interface VersionListData {
+  translations: Version[];
+  sources: Version[];
 }

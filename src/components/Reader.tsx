@@ -9,7 +9,7 @@ export const Reader = (props: {
   passage: Passage;
   closeAction?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }): JSX.Element => {
-  const [selectedVersion, setVersion] = useState({ fullname: 'Choose A Version', name: 'KJV' });
+  const [selectedVersion, setVersion] = useState({ id: 0, full_name: 'Choose A Version', name: 'KJV' });
   const [showVersions, setShowVersions] = useState(false);
   const [passageData, setPassageData] = useState<any[]>([]);
   const setters = { setVersion, setShowVersions, setReaderText: setPassageData };
@@ -33,12 +33,10 @@ export const Reader = (props: {
         justify-center relative group ${showVersions ? 'bg-white' : 'bg-gray-100'}`}
       >
         {props.closeAction ? <CloseButton closeAction={props.closeAction}></CloseButton> : null}
-        <h2 className='text-xl font-bold text-center'>{selectedVersion.fullname}</h2>
+        <h2 className='text-xl font-bold text-center'>{selectedVersion.full_name}</h2>
       </div>
       <div className='leading-8 p-4 reader'>
-        {passageData.map((verse) => (
-          <div>{`${verse.verse}. ` + verse.text}</div>
-        ))}
+        {passageData ? passageData.map((verse) => <div>{`${verse.verse}. ` + verse.text}</div>) : 'N/A'}
       </div>
     </div>
   );

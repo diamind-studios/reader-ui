@@ -13,6 +13,7 @@ export interface Version {
   id: number;
   name: string;
   full_name: string;
+  type: 'translation' | 'source';
 }
 
 export interface VersionListData {

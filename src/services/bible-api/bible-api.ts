@@ -1,25 +1,32 @@
 import { Version } from '../../types/types';
 import { sendRequest } from './request';
 
-export const getTranslationText = async (versionName: string) => {
+export const getTranslationText = async (versionName: string, passage: any) => {
   const endpoint = '/translation_text';
-  const params = {
-    book: 'Genesis',
-    chapter: 1,
-    translation: versionName,
-  };
+  const params = { ...passage, translation: versionName };
+  return await sendRequest(params, endpoint);
+};
+
+export const getSourceText = async (versionName: string, passage: any) => {
+  const endpoint = '/source_text';
+  const params = { ...passage, source: versionName };
   return await sendRequest(params, endpoint);
 };
 
 export const getTranslationList = async (): Promise<Version[]> => {
   const endpoint = '/translation';
   const params = { complete: 1 }; //change complete to active
-  return await sendRequest(params, endpoint);
+  const response = await sendRequest(params, endpoint);
+  return response.map((translation: any) => {
+    return { ...translation, type: 'translation' };
+  });
 };
 
 export const getSourceList = async (): Promise<Version[]> => {
   const endpoint = '/source';
   const params = { complete: 1 }; //change complete to active
-  return await sendRequest(params, endpoint);
+  const response = await sendRequest(params, endpoint);
+  return response.map((source: any) => {
+    return { ...source, type: 'source' };
+  });
 };
-

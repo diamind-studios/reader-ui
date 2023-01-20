@@ -1,23 +1,36 @@
 import { useMemo, useState } from 'react';
-import { getTranslationText } from '../services/bible-api/bible-api';
-import { Passage } from '../types/types';
+import { getSourceText, getTranslationText } from '../services/bible-api/bible-api';
+import { Passage, Version } from '../types/types';
 import { CloseButton } from './CloseButton';
+import { PassageText } from './PassageText/PassageText';
 import { VersionList } from './VersionList';
+
+const defaultVersion: Version = {
+  id: 0,
+  full_name: 'Choose A Version',
+  name: 'KJV',
+  type: 'translation',
+};
 
 export const Reader = (props: {
   key: string;
   passage: Passage;
   closeAction?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }): JSX.Element => {
-  const [selectedVersion, setVersion] = useState({ id: 0, full_name: 'Choose A Version', name: 'KJV' });
+  const [selectedVersion, setVersion] = useState(defaultVersion);
   const [showVersions, setShowVersions] = useState(false);
   const [passageData, setPassageData] = useState<any[]>([]);
   const setters = { setVersion, setShowVersions, setReaderText: setPassageData };
 
   useMemo(async () => {
     console.log('🌐 retrieving text...');
-    const passage = await getTranslationText(selectedVersion.name);
-    setPassageData(passage);
+    let passageText;
+    if (selectedVersion.type === 'translation') {
+      passageText = await getTranslationText(selectedVersion.name, props.passage);
+    } else if (selectedVersion.type === 'source') {
+      passageText = await getSourceText(selectedVersion.name, props.passage);
+    }
+    setPassageData(passageText);
   }, [props.passage, selectedVersion]);
 
   return (
@@ -35,9 +48,8 @@ export const Reader = (props: {
         {props.closeAction ? <CloseButton closeAction={props.closeAction}></CloseButton> : null}
         <h2 className='text-xl font-bold text-center'>{selectedVersion.full_name}</h2>
       </div>
-      <div className='leading-8 p-4 reader'>
-        {passageData ? passageData.map((verse) => <div>{`${verse.verse}. ` + verse.text}</div>) : 'N/A'}
-      </div>
+
+      <PassageText passageData={passageData} versionType={selectedVersion.type}></PassageText>
     </div>
   );
 };

@@ -20,3 +20,10 @@ export interface VersionListData {
   translations: Version[];
   sources: Version[];
 }
+
+export interface Word {
+  word: string;
+  punctuation: string;
+  verse: number;
+  words_id: number;
+}

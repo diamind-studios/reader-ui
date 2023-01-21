@@ -4,14 +4,7 @@ import { TranslationText } from './TranslationText';
 
 export const PassageText = (props: { versionType: 'translation' | 'source'; passageData: any[] }): JSX.Element => {
   const translationText = () => <TranslationText passageData={props.passageData}></TranslationText>; //props.passageData.map((verse) => <div>{`${verse.verse}. ` + verse.text}</div>);
-  const sourceText = () => {
-    let verseNumber = 0;
-    return props.passageData.map((word) => {
-      const newVerse = verseNumber !== word.verse ? word.verse : null;
-      verseNumber = newVerse || verseNumber;
-      return <SourceText word={word} verseNumber={newVerse}></SourceText>;
-    });
-  };
+  const sourceText = () => <SourceText passageData={props.passageData}></SourceText>;
   const getText = {
     translation: translationText,
     source: sourceText,

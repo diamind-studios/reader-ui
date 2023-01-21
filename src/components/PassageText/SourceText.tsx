@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Word } from '../../types/types';
 import { WordLookup } from '../WordLookup';
+import { SourceTextWord } from './SourceTextWord';
 
 export const SourceText = (props: { passageData: Word[] }): JSX.Element => {
   const [loadWord, setLoadWord] = useState(false);
@@ -20,19 +21,7 @@ export const SourceText = (props: { passageData: Word[] }): JSX.Element => {
                 {`${newVerse}. `}
               </b>
             ) : null}
-            <span
-              tabIndex={100}
-              onFocus={() => {
-                setLoadWord(true);
-                setWordData(word);
-              }}
-              onBlur={(e) => {
-                if (!e.relatedTarget?.classList.contains('wordLookup')) setLoadWord(false);
-              }}
-              className='hover:bg-slate-300 rounded-md p-0.5 group relative'
-            >
-              {word.word}
-            </span>
+            <SourceTextWord setLoadWord={setLoadWord} setWordData={setWordData} word={word}></SourceTextWord>
             {`${word.punctuation || ''} `}
           </React.Fragment>
         );

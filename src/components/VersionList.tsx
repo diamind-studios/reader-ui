@@ -24,7 +24,7 @@ export const VersionList = (props: {
     <span
       id='versionSelect'
       className={`duration-50 left-1/2 -translate-x-1/2 flex-col absolute top-14 bg-gray-200 
-      shadow-md w-4/5 rounded-md ${props.showVersions ? 'scale-100' : 'scale-0'}`}
+      shadow-md w-4/5 rounded-md z-10 ${props.showVersions ? 'scale-100' : 'scale-0'}`}
     >
       <div
         tabIndex={100}

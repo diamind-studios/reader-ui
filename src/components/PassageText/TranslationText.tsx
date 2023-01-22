@@ -1,14 +1,10 @@
 import React from 'react';
+import { TranslationTextVerse } from './TranslationTextVerse';
 
-export const TranslationText = (props: { passageData: any[] }) => {
-  return (
-    <React.Fragment>
-      {props.passageData.map((verse) => (
-        <div>
-          <b>{`${verse.verse}. `}</b>
-          {verse.text}
-        </div>
-      ))}
-    </React.Fragment>
-  );
+export const TranslationText = (props: { passageData: any[] }): JSX.Element => {
+  const translationText = props.passageData.map((verse) => {
+    const uuid = `t_${verse.book}_${verse.translation_id}`;
+    return <TranslationTextVerse key={uuid} verse={verse}></TranslationTextVerse>;
+  });
+  return <React.Fragment>{translationText}</React.Fragment>;
 };

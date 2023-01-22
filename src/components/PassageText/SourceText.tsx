@@ -21,7 +21,12 @@ export const SourceText = (props: { passageData: Word[] }): JSX.Element => {
                 {`${newVerse}. `}
               </b>
             ) : null}
-            <SourceTextWord setLoadWord={setLoadWord} setWordData={setWordData} word={word}></SourceTextWord>
+            <SourceTextWord
+              key={word.word}
+              setLoadWord={setLoadWord}
+              setWordData={setWordData}
+              word={word}
+            ></SourceTextWord>
             {`${word.punctuation || ''} `}
           </React.Fragment>
         );

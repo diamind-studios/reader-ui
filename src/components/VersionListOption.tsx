@@ -1,7 +1,7 @@
 import { changeVersion } from '../common/changeVersion';
 import { Version } from '../types/types';
 
-export const VersionListOption = (props: { key: string; version: Version; setters: any }) => {
+export const VersionListOption = (props: { key: string; version: Version; setters: any }): JSX.Element => {
   return (
     <div
       tabIndex={100}

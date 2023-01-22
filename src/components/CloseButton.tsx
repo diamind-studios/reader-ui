@@ -1,6 +1,6 @@
 export const CloseButton = (props: {
   closeAction: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-}) => (
+}): JSX.Element => (
   <button
     onClick={props.closeAction}
     className='absolute text-white scale-0 w-5 leading-none group-hover:scale-100 

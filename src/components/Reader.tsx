@@ -23,7 +23,6 @@ export const Reader = (props: {
   const setters = { setVersion, setShowVersions, setReaderText: setPassageData };
 
   useMemo(async () => {
-    console.log('🌐 retrieving text...');
     let passageText;
     if (selectedVersion.type === 'translation') {
       passageText = await getTranslationText(selectedVersion.name, props.passage);

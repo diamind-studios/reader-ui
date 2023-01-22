@@ -5,7 +5,7 @@ import { Reader } from './Reader';
 
 const MAX_READER_TABS = 3;
 
-export const PageContent = (props: { passage: Passage }) => {
+export const PageContent = (props: { passage: Passage }): JSX.Element => {
   const defaultReaderList = [<Reader key={crypto.randomUUID()} passage={props.passage}></Reader>];
   const [readers, setReaders] = useState(defaultReaderList);
   // const [versionsList, setVersionsList] = useState();

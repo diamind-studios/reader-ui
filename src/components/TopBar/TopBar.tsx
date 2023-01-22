@@ -3,7 +3,7 @@ import search from '../../images/search.svg';
 import { Passage, StateSetter } from '../../types/types';
 
 export const TopBar = (props: { passage: Passage; setPassage: StateSetter<Passage> }): JSX.Element => (
-  <div className='fixed top-0 left-0 h-14 w-screen flex flex-row shadow-md bg-slate-100 font-bold text-xl z-10'>
+  <div className='fixed top-0 left-0 h-14 w-screen flex flex-row shadow-md bg-slate-100 font-bold text-xl z-20'>
     <header id='logo' className='flex items-center w-full'>
       <a className='w-10 h-10 absolute' href='http://localhost:3000'>
         {/* This shouldn't be duplicated below. But if it's not absolute, it resizes with the browser window */}

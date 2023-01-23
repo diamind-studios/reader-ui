@@ -9,7 +9,7 @@ export const SourceText = (props: { passageData: Word[] }): JSX.Element => {
   let verseNumber = 0;
   return (
     <React.Fragment>
-      {loadWord && wordData ? <WordLookup wordData={wordData}></WordLookup> : null}
+      {loadWord && wordData ? <WordLookup wordData={wordData} setLoadWord={setLoadWord}></WordLookup> : null}
       {props.passageData.map((word) => {
         const newVerse = verseNumber !== word.verse ? word.verse : null;
         verseNumber = newVerse || verseNumber;

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getConcordance } from '../services/bible-api/bible-api';
-import { Word } from '../types/types';
+import { StateSetter, Word } from '../types/types';
+import { CloseButton } from './CloseButton';
+import { ConcordanceTab } from './ConcordanceTab';
 import { WordDefinitions } from './WordDefinitions';
 
-export const WordLookup = (props: { wordData: Word }) => {
+export const WordLookup = (props: { wordData: Word; setLoadWord: StateSetter<boolean> }) => {
   const [concordanceData, setConcordanceData] = useState<any>();
   useEffect(() => {
     const getData = async () => {
@@ -16,8 +18,9 @@ export const WordLookup = (props: { wordData: Word }) => {
   return (
     <div
       tabIndex={10}
-      className='wordLookup absolute z-10 bg-slate-100 rounded-md border-solid border-2 border-slate-200 shadow-md w-48 p-4 -right-52'
+      className='wordLookup absolute z-10 reader border-solid border-2 border-gray-300  w-48 p-4 -right-52 group'
     >
+      <CloseButton closeAction={() => props.setLoadWord(false)} display={'scale-100'}></CloseButton>
       {concordanceData ? <WordDefinitions data={concordanceData}></WordDefinitions> : 'N/A'}
     </div>
   );

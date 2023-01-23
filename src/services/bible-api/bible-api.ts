@@ -1,6 +1,12 @@
 import { Version } from '../../types/types';
 import { sendRequest } from './request';
 
+export const getVersePassage = async (params: any) => {
+  const endpoint = '/verse';
+  const passages = await sendRequest(params, endpoint);
+  return passages[0];
+};
+
 export const getTranslationText = async (versionName: string, passage: any) => {
   const endpoint = '/translation_text';
   const params = { ...passage, translation: versionName };
@@ -32,8 +38,8 @@ export const getSourceList = async (): Promise<Version[]> => {
 };
 
 export const getConcordance = async (words_id: number): Promise<Version[]> => {
-  console.log('words_id',words_id)
+  console.log('words_id', words_id);
   const endpoint = '/concordance';
-  const params = { words_id }; 
+  const params = { words_id };
   return await sendRequest(params, endpoint);
 };

@@ -5,8 +5,9 @@ export interface Setters {
 }
 
 export interface Passage {
-  book: string;
+  book_name: string;
   chapter: number;
+  verse?: number;
 }
 
 export interface Version {

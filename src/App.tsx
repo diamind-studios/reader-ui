@@ -4,7 +4,7 @@ import { TopBar } from './components/TopBar/TopBar';
 import { Passage } from './types/types';
 
 function App() {
-  const defaultPassage: Passage = { book: 'Genesis', chapter: 1 };
+  const defaultPassage: Passage = { book_name: 'Genesis', chapter: 1 };
   const [passage, setPassage] = useState(defaultPassage);
   return (
     <div className='flex w-screen min-h-screen font-sans'>

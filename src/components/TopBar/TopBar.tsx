@@ -18,14 +18,14 @@ export const TopBar = (props: { passage: Passage; setPassage: StateSetter<Passag
         src={logo}
         alt='https://publicdomainvectors.org/en/free-clipart/Icon-book/58707.html'
       />
-      <SearchBar></SearchBar>
+      <SearchBar setPassage={props.setPassage}></SearchBar>
       <div id='navigation' className='flex w-full justify-center'>
         <button className='topbar-item topbar-button group'>
           <span>{'<'}</span>
           <span className='tooltip topbar-tooltip '>Previous Chapter</span>
         </button>
         <span className='topbar-item cursor-default'>
-          {props.passage.book} {props.passage.chapter}
+          {props.passage.book_name} {props.passage.chapter}
         </span>
         <button className='topbar-item topbar-button group'>
           <span>{'>'}</span>

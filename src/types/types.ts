@@ -27,4 +27,6 @@ export interface Word {
   punctuation: string;
   verse: number;
   words_id: number;
+  parsing_id: number;
+  parsing_title: string;
 }

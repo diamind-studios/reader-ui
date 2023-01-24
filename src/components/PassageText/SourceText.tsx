@@ -6,6 +6,7 @@ import { SourceTextWord } from './SourceTextWord';
 export const SourceText = (props: { passageData: Word[] }): JSX.Element => {
   const [loadWord, setLoadWord] = useState(false);
   const [wordData, setWordData] = useState<Word>();
+  const uuid = crypto.randomUUID();
   let verseNumber = 0;
   return (
     <React.Fragment>
@@ -22,7 +23,7 @@ export const SourceText = (props: { passageData: Word[] }): JSX.Element => {
               </b>
             ) : null}
             <SourceTextWord
-              key={word.word}
+              key={uuid}
               setLoadWord={setLoadWord}
               setWordData={setWordData}
               word={word}

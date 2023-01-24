@@ -46,8 +46,11 @@
     @apply bg-gray-100 shadow-md rounded-md;
   }
   .close-button {
-    @apply absolute text-white w-7 h-7 leading-none group-hover:scale-100 
+    @apply absolute text-white w-7 h-7 leading-none 
      rounded-md border-red-100 border -mx-1 right-2 top-1 select-none shadow-md
-     /*bg-black*/ bg-gray-500 hover:bg-red-500 duration-100
+     /*bg-black*/ bg-gray-500 hover:bg-red-500 duration-100 origin-center hover:scale-105 
+  }
+  .tab {
+    @apply text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal 
   }
 }

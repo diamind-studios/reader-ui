@@ -1,4 +1,4 @@
-import { Version } from '../../types/types';
+import { Parsing, Version } from '../../types/types';
 import { sendRequest } from './request';
 
 export const getVersePassage = async (params: any) => {
@@ -37,8 +37,13 @@ export const getSourceList = async (): Promise<Version[]> => {
   });
 };
 
+export const getParsing = async (parsing_id: number): Promise<Parsing[]> => {
+  const endpoint = '/parsing';
+  const params = { parsing_id };
+  return await sendRequest(params, endpoint);
+};
+
 export const getConcordance = async (words_id: number): Promise<Version[]> => {
-  console.log('words_id', words_id);
   const endpoint = '/concordance';
   const params = { words_id };
   return await sendRequest(params, endpoint);

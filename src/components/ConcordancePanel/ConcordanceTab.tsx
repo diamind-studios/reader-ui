@@ -8,7 +8,7 @@ export const ConcordanceTab = (props: {
   }) => {
     return (
       <a
-        className={'tab ' + (props.openTab === props.tabId ? ' text-white bg-blue-700' : ' text-blue-700 bg-white')}
+        className={'tab ' + (props.openTab === props.tabId ? ' text-white bg-blue-600' : ' text-blue-600 bg-white hover:bg-blue-100')}
         onClick={(e) => {
           e.preventDefault();
           props.setOpenTab(props.tabId);

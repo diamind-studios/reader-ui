@@ -51,6 +51,9 @@
      /*bg-black*/ bg-gray-500 hover:bg-red-500 duration-100 origin-center hover:scale-105 
   }
   .tab {
-    @apply text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal 
+    @apply text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal shadow-md
+  }
+  .concordance-header {
+    @apply uppercase font-extrabold text-sm text-blue-800 bg-gray-100 rounded-full px-2 py-1 mt-2 w-fit -mx-1
   }
 }

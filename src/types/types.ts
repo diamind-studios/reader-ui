@@ -28,10 +28,16 @@ export interface Word {
   verse: number;
   words_id: number;
   parsing_id: number;
-  parsing_title: string;
 }
 
 export interface ReaderMeta {
   key: string;
   setReaders?: any;
+}
+
+export interface Parsing {
+  parsing_id: number;
+  language: string;
+  parsing_title: string;
+  description: string;
 }

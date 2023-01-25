@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
-import { getConcordance } from '../services/bible-api/bible-api';
-import { StateSetter, Word } from '../types/types';
+import { getConcordance, getParsing } from '../services/bible-api/bible-api';
+import { Parsing, StateSetter, Word } from '../types/types';
 import { CloseButton } from './CloseButton';
 import { ConcordancePanel } from './ConcordancePanel/ConcordancePanel';
-import { WordDefinitions } from './WordDefinitions';
 
 export const WordLookup = (props: { wordData: Word; setLoadWord: StateSetter<boolean> }) => {
   const [concordanceData, setConcordanceData] = useState<any[]>([]);
-  //   const [parsingData, setParsingData] = useState<any[]>([]);
+  const [parsingData, setParsingData] = useState<Parsing>();
+
   useEffect(() => {
     const getData = async () => {
-      const concordanceData = await getConcordance(props.wordData.words_id);
-      console.log(concordanceData);
-      setConcordanceData(concordanceData);
+      const parsings = getParsing(props.wordData.parsing_id);
+      const concordanceEntries = getConcordance(props.wordData.words_id);
+      setParsingData((await parsings)[0]);
+      setConcordanceData(await concordanceEntries);
     };
     getData();
   }, [props.wordData]);
@@ -24,12 +25,11 @@ export const WordLookup = (props: { wordData: Word; setLoadWord: StateSetter<boo
     >
       <CloseButton closeAction={() => props.setLoadWord(false)} display={'scale-100'}></CloseButton>
       <div className='py-2 text-center'>
-        {/* this info shouldn't be included in source_text request but should be its own request to words & parsing */}
-        <h2 className='font-semibold text-blue-700 text-xl'>{props.wordData.word}</h2>
-        <h2 className='font-semibold text-blue-600 text-sm'>{props.wordData.parsing_title}</h2>
+        <h2 className='font-semibold text-blue-700 text-xl'>{props.wordData.word}</h2> {/* this should be calling words endpoint for the lexeme and partofspeech */}
+        <h2 className='font-semibold text-blue-600 text-sm'>{parsingData?.parsing_title}</h2>
+        <h2 className='font-semibold text-blue-600 text-2xs'>{parsingData?.description}</h2>
       </div>
       <ConcordancePanel concordanceData={concordanceData}></ConcordancePanel>
-      {/* {concordanceData ? <WordDefinitions data={concordanceData}></WordDefinitions> : 'N/A'} */}
     </div>
   );
 };

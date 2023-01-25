@@ -1,7 +1,9 @@
-export const getItemCloser = (key: string, setItemList: React.Dispatch<React.SetStateAction<JSX.Element[]>>) => {
+import { ReaderMeta } from '../types/types';
+
+export const getReaderCloser = (key: string, setReaderList: React.Dispatch<React.SetStateAction<ReaderMeta[]>>) => {
   return (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setItemList((itemList) => {
-      const newItemList: JSX.Element[] = itemList.filter((item, index) => {
+    setReaderList((itemList) => {
+      const newItemList: ReaderMeta[] = itemList.filter((item, index) => {
         return item.key !== key;
       });
       return newItemList;

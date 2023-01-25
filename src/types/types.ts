@@ -30,3 +30,8 @@ export interface Word {
   parsing_id: number;
   parsing_title: string;
 }
+
+export interface ReaderMeta {
+  key: string
+  
+}

@@ -1,21 +1,20 @@
 import { useState } from 'react';
-import { getItemCloser } from '../common/closeItem';
-import { Passage } from '../types/types';
+import { getReaderCloser } from '../common/closeItem';
+import { Passage, ReaderMeta } from '../types/types';
 import { Reader } from './Reader';
 
 const MAX_READER_TABS = 3;
 
 export const PageContent = (props: { passage: Passage }): JSX.Element => {
-  const defaultReaderList = [<Reader key={crypto.randomUUID()} passage={props.passage}></Reader>];
+  const defaultReaderList: ReaderMeta[] = [{ key: crypto.randomUUID() }];
   const [readers, setReaders] = useState(defaultReaderList);
-  // const [versionsList, setVersionsList] = useState();
 
-  const addReaderTab = async () => {
+  const addReaderTab = () => {
     if (readers.length === MAX_READER_TABS) return;
     const key = crypto.randomUUID();
-    const closeAction = getItemCloser(key, setReaders);
-    const newReader = <Reader key={key} passage={props.passage} closeAction={closeAction}></Reader>;
-    await setReaders([...readers, newReader]);
+    const closeAction = getReaderCloser(key, setReaders);
+    const newReader = { key, passage: props.passage, closeAction };
+    setReaders([...readers, newReader]);
   };
 
   const maxReaders = readers.length === MAX_READER_TABS;
@@ -28,7 +27,9 @@ export const PageContent = (props: { passage: Passage }): JSX.Element => {
 
   return (
     <div id='content' className='my-16 w-full text-lg mr-10 flex bg-transparent justify-center relative overflow-show'>
-      {readers}
+      {readers.map((readerMeta: any) => (
+        <Reader key={readerMeta.key} passage={props.passage} closeAction={readerMeta.closeAction}></Reader>
+      ))}
       <button onClick={addReaderTab} className={newTabStyles}>
         <span>+</span>
         <span className={maxReaders ? 'tooltip group-hover:scale-0' : 'tooltip top-8 -left-2'}>Add another Bible</span>

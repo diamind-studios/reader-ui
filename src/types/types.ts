@@ -32,6 +32,6 @@ export interface Word {
 }
 
 export interface ReaderMeta {
-  key: string
-  
+  key: string;
+  setReaders?: any;
 }

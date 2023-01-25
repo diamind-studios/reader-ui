@@ -13,7 +13,7 @@
     @apply ease-linear transition-all duration-100;
   }
   .topbar-item {
-    @apply relative flex items-center text-gray-600 
+    @apply relative flex items-center text-gray-700 font-extrabold 
     w-auto h-10 px-2 mx-2 my-2 not-italic select-none;
   }
   .topbar-button {

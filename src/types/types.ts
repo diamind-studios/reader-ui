@@ -15,6 +15,7 @@ export interface Version {
   name: string;
   full_name: string;
   type: 'translation' | 'source';
+  language?: string;
 }
 
 export interface VersionListData {

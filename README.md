@@ -1,19 +1,31 @@
 # Bible Reader UI
 
-## Running 
+This is a reader for ancient documents and scriptures in their original languages. It displays word level parsing and definitions.
+
+It is written using React and TailwindCSS
+
+## ToDo:
+
+- Add Logo & Favicon
+
+## Running
+
 To run the application execute:
+
 ### `npm start`
 
 This Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Testing
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ## Building for deployment
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\

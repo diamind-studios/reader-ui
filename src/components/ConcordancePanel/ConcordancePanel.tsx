@@ -6,9 +6,9 @@ export const ConcordancePanel = (props: { concordanceData: any[] }) => {
   const [openTab, setOpenTab] = useState(0);
 
   const tabs = props.concordanceData?.map((concordanceEntry: any, index: number) => {
-    console.log(index, concordanceEntry);
     return (
       <ConcordanceTab
+        key={index}
         tabId={index}
         openTab={openTab}
         setOpenTab={setOpenTab}

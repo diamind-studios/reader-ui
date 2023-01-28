@@ -1,7 +1,6 @@
 import { StateSetter, Word } from '../../types/types';
 
 export const SourceTextWord = (props: {
-  key: string;
   setLoadWord: StateSetter<boolean>;
   setWordData: StateSetter<Word | undefined>;
   word: Word;

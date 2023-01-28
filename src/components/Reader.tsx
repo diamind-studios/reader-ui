@@ -6,7 +6,7 @@ import { PassageText } from './PassageText/PassageText';
 import { VersionList } from './VersionList';
 
 const defaultVersion: Version = {
-  id: 0,
+  translation_id: 0,
   full_name: 'Choose A Version',
   name: 'KJV',
   type: 'translation',
@@ -17,7 +17,7 @@ export const Reader = (props: {
   passage: Passage;
   closeAction?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }): JSX.Element => {
-  const [selectedVersion, setVersion] = useState(defaultVersion);
+  const [selectedVersion, setVersion] = useState<Version>(defaultVersion);
   const [showVersions, setShowVersions] = useState(false);
   const [passageData, setPassageData] = useState<any[]>([]);
   const setters = { setVersion, setShowVersions, setReaderText: setPassageData };

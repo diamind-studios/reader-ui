@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from 'axios';
 
 const headers = {
   'Content-type': 'application/json',

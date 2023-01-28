@@ -32,7 +32,7 @@ export const parseSearchText = (searchQuery: string) /*: PassageQuery*/ => {
   const chapter = parseChapter(splitQuery) || 1;
   const verse = parseVerseNumber(splitQuery) || 1;
   const params = {
-    ['book_name.like']: book_name,
+    'book_name.like': book_name,
     chapter,
     verse,
   };

@@ -10,13 +10,22 @@ export interface Passage {
   verse?: number;
 }
 
-export interface Version {
-  id: number;
+export interface Translation {
+  translation_id: number;
   name: string;
   full_name: string;
-  type: 'translation' | 'source';
+  type: 'translation';
+}
+
+export interface Source {
+  source_id: number;
+  name: string;
+  full_name: string;
+  type: 'source';
   language?: string;
 }
+
+export type Version = Source | Translation;
 
 export interface VersionListData {
   translations: Version[];

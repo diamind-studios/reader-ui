@@ -24,7 +24,7 @@ export const TopBar = (props: { passage: Passage; setPassage: StateSetter<Passag
           <span>{'<'}</span>
           <span className='tooltip topbar-tooltip '>Previous Chapter</span>
         </button>
-        <span className='topbar-item cursor-default'>
+        <span className='topbar-item cursor-pointer hover:bg-gray-200 py-1 standard-transition'>
           {props.passage.book_name} {props.passage.chapter}
         </span>
         <button className='topbar-item topbar-button group'>

@@ -14,11 +14,11 @@
   }
   .topbar-item {
     @apply relative flex items-center text-gray-700 font-extrabold 
-    w-auto h-10 px-2 mx-2 my-2 not-italic select-none;
+    w-auto h-10 px-2 mx-2 my-2 not-italic select-none rounded-xl;
   }
   .topbar-button {
     @apply shadow-lg bg-gray-800 text-gray-200 hover:bg-amber-400
-    hover:text-white rounded-xl hover:rounded-lg justify-center
+    hover:text-white hover:rounded-lg justify-center
     standard-transition;
   }
   .sidebar-icon {

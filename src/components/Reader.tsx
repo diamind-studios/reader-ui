@@ -6,9 +6,9 @@ import { PassageText } from './PassageText/PassageText';
 import { VersionList } from './VersionList';
 
 const defaultVersion: Version = {
-  translation_id: 0,
+  translation_id: 3,
   full_name: 'Choose A Version',
-  name: 'KJV',
+  name: 'BSB',
   type: 'translation',
 };
 

@@ -7,15 +7,15 @@ export const getVersePassage = async (params: any) => {
   return passages[0];
 };
 
-export const getTranslationText = async (versionName: string, passage: any) => {
+export const getTranslationText = async (translation_id: number, passage: any) => {
   const endpoint = '/translation_text';
-  const params = { ...passage, translation: versionName };
+  const params = { ...passage, translation_id };
   return await sendRequest(params, endpoint);
 };
 
-export const getSourceText = async (versionName: string, passage: any) => {
+export const getSourceText = async (source_id: number, passage: any) => {
   const endpoint = '/source_text';
-  const params = { ...passage, source: versionName };
+  const params = { ...passage, source_id };
   return await sendRequest(params, endpoint);
 };
 

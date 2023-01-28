@@ -25,9 +25,9 @@ export const Reader = (props: {
   useMemo(async () => {
     let passageText;
     if (selectedVersion.type === 'translation') {
-      passageText = await getTranslationText(selectedVersion.name, props.passage);
+      passageText = await getTranslationText(selectedVersion.translation_id, props.passage);
     } else if (selectedVersion.type === 'source') {
-      passageText = await getSourceText(selectedVersion.name, props.passage);
+      passageText = await getSourceText(selectedVersion.source_id, props.passage);
     }
     setPassageData(passageText);
   }, [props.passage, selectedVersion]);

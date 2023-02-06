@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Word } from '../../types/types';
-import { WordLookup } from '../WordDetails';
+import { WordPanel } from '../WordDetails';
 import { SourceTextWord } from './SourceTextWord';
 
 export const SourceText = (props: { passageData: Word[] }): JSX.Element => {
@@ -9,7 +9,7 @@ export const SourceText = (props: { passageData: Word[] }): JSX.Element => {
   let verseNumber = 0;
   return (
     <React.Fragment>
-      {loadWord && wordData ? <WordLookup wordData={wordData} setLoadWord={setLoadWord}></WordLookup> : null}
+      {loadWord && wordData ? <WordPanel wordData={wordData} setLoadWord={setLoadWord}></WordPanel> : null}
       {props.passageData?.map((word) => {
         const newVerse = verseNumber !== word.verse ? word.verse : null;
         verseNumber = newVerse || verseNumber;

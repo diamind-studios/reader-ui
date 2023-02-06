@@ -3,7 +3,12 @@ import { Word } from '../../types/types';
 import { WordPanel } from '../WordDetails';
 import { SourceTextWord } from './SourceTextWord';
 
-export const SourceText = (props: { passageData: Word[] }): JSX.Element => {
+const setPunctuation = (punctuation: string, sourceId: number) => {
+  if (sourceId === 12) return punctuation;
+  return `${punctuation || ''} `;
+};
+
+export const SourceText = (props: { passageData: Word[]; sourceId: number }): JSX.Element => {
   const [loadWord, setLoadWord] = useState(false);
   const [wordData, setWordData] = useState<Word>();
   let verseNumber = 0;
@@ -21,8 +26,13 @@ export const SourceText = (props: { passageData: Word[] }): JSX.Element => {
                 {`${newVerse}. `}
               </b>
             ) : null}
-            <SourceTextWord setLoadWord={setLoadWord} setWordData={setWordData} word={word}></SourceTextWord>
-            {`${word.punctuation || ''} `}
+            <SourceTextWord
+              setLoadWord={setLoadWord}
+              setWordData={setWordData}
+              word={word}
+              sourceId={props.sourceId}
+            ></SourceTextWord>
+            {setPunctuation(word.punctuation, props.sourceId)}
           </React.Fragment>
         );
       })}

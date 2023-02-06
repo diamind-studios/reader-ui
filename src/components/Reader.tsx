@@ -49,7 +49,7 @@ export const Reader = (props: {
         </div>
         {props.closeAction ? <CloseButton closeAction={props.closeAction}></CloseButton> : null}
       </div>
-      <PassageText passageData={passageData} versionType={selectedVersion.type}></PassageText>
+      <PassageText passageData={passageData} selectedVersion={selectedVersion}></PassageText>
     </div>
   );
 };

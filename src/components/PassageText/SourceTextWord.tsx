@@ -4,7 +4,9 @@ export const SourceTextWord = (props: {
   setLoadWord: StateSetter<boolean>;
   setWordData: StateSetter<Word | undefined>;
   word: Word;
+  sourceId: number;
 }) => {
+  const padding = props.sourceId === 12 ? 'py-0.5' : 'p-0.5';
   return (
     <span
       tabIndex={100}
@@ -15,7 +17,7 @@ export const SourceTextWord = (props: {
       onBlur={(e) => {
         if (!e.relatedTarget?.classList.contains('wordLookup')) props.setLoadWord(false);
       }}
-      className='hover:bg-slate-300 rounded-md p-0.5 group relative'
+      className={`hover:bg-slate-300 rounded-md ${padding} group relative`}
     >
       {props.word.word}
     </span>
